@@ -1,0 +1,903 @@
+/* Reset CSS */
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+.body {
+    font-family: "Sofia Sans", sans-serif;
+}
+.blur {
+    filter: blur(5px);
+}
+
+.title {
+    font-size: 1.5em;
+    font-weight: 600;
+    margin-block: 5px;
+    display: flex;
+    justify-content: center;
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.container {
+    display: grid;
+    margin-inline: 5px;
+    column-gap: 10px;
+    grid-template-columns: minmax(350px, 25vw) auto;
+
+}
+
+.filters {
+    height: 80vh;
+    position: sticky;
+    background-color: #BDE0FE;
+    border-radius: 15px;
+    top: 5px;
+    box-sizing: border-box;
+    box-shadow: 0 0 8px rgba(14, 44, 89, 0.6);
+    display: flex;
+    flex-direction: column;
+}
+.button-container {
+    display: flex;
+    justify-content: center;
+    margin: 10px 5px 5px 5px;
+    column-gap: 10px;
+}
+
+.groups, .teachers {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    flex: 1;
+}
+.groups-container, .teachers-container {
+    overflow-y: auto;
+    flex-grow: 1;   
+}
+.groups-container::-webkit-scrollbar, .teachers-container::-webkit-scrollbar {
+    display: none;
+}
+.action-button {
+    background-color: #3B82F6; 
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px; 
+    font-size: 16px;
+    font-family: "Sofia Sans", sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.action-button:hover {
+    background-color: #2563EB;
+    transform: scale(1.05);
+    box-shadow: 0 6px 10px rgba(37, 99, 235, 0.5);
+}
+.action-button:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(37, 99, 235, 0.4);
+}  
+.search-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 5px;
+  box-sizing: border-box;
+  border: 2px solid #6ea4fc;
+  border-radius: 25px;
+  padding: 5px;
+  background-color: #F3F4F6;
+  transition: box-shadow 0.3s ease;
+}
+
+input[type="search"]::-webkit-search-cancel-button {
+    -webkit-appearance: none;
+}
+.search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  font-size: 14px;
+  background: transparent;
+  padding: 10px;
+  color: #1F2937;
+  font-weight: 500;
+}
+.search-input::placeholder {
+  color: #9CA3AF;
+  font-style: italic;
+}
+.search-button {
+  border: none;
+  background: #3B82F6;
+  color: white;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.icon {
+  width: 20px;
+  height: 20px;
+}
+.search-container:hover {
+  box-shadow: 0 4px 8px rgba(59, 130, 246, 0.4);
+}
+.search-button:hover {
+  background-color: #2563EB;
+  transform: scale(1.1);
+}
+
+/* Schedule table */
+.schedule {
+    padding-bottom: 5px;
+}
+
+.schedule-table {
+    width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.schedule-table thead {
+    position: sticky;
+    top: 45px;
+    z-index: 1;
+}
+
+.schedule-table th,
+.schedule-table td {
+    box-sizing: border-box;
+    border: 1px solid #a9a9a9;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+.schedule-table .empty-row {
+    height: 25px;
+    padding: 0;
+    border-inline: 1px solid #a9a9a9;
+    border-block: 1.2px solid black;
+}
+.schedule-table th:first-child {
+    width: 185px;
+}
+.schedule-table .nav-cell {
+    text-align: center;
+    vertical-align: middle;
+    padding: 2px;
+    font-size: 2rem;
+    cursor: pointer;
+    user-select: none;
+}
+
+.schedule-table th:not(:first-child) {
+    width: 125px;
+}
+
+.schedule-table td:not(:empty):not(.pair-time-cell):not(.day) {
+    padding: 2px;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    position: relative;
+}
+.schedule-table td:not(:empty):not(.pair-time-cell):not(.day):hover .lesson-info {
+    filter: blur(2px);
+}
+.schedule-table td:not(:empty):not(.pair-time-cell):not(.day):hover .icon-button {
+    visibility: visible;
+}
+.lesson-controls {
+    position: absolute;
+    top: 2px;
+    left: 0px;
+    width: 98%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.lesson-controls .icon-button {
+    padding-inline: 2px;
+}
+
+.schedule-table td p {
+    font-size: calc(0.75rem * var(--colspan));
+    text-align: center;
+}
+.schedule-table td p b {
+    font-weight: 800;
+}
+
+.schedule-table th, .schedule-table .pair-time-cell, .schedule-table .day {
+    background-color: #f4f4f4;
+    font-weight: 700;
+    border: 1px solid black;
+    user-select: none;
+}
+
+.schedule-table .day {
+    white-space: normal;
+    font-weight: 800;
+    font-size: 40px;
+    writing-mode: vertical-rl;
+    text-orientation: upright;
+    padding: 0;
+    height: 450px;
+}
+.schedule-table .pair-time-cell {
+    font-size: 14px;
+    padding: 0;
+    height: 112.5px;
+}
+
+/* Course select */
+.header-course {
+    box-sizing: border-box;
+    height: 40px;
+    position: sticky;
+    top: 5px;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+    align-items: center;
+    justify-items: center;
+    background-color: #fff5c7;
+    font-family: "Sofia Sans", sans-serif;
+    padding: 5px;
+    border-top: 1px solid black;
+    border-inline: 1px solid black;
+    z-index: 1;
+}
+.course-value {
+    font-size: 1.5em;
+    font-weight: 800;
+    color: #333;
+    text-align: center;
+}
+.nav-btn {
+    background: #3B82F6;
+    border: none;
+    color: white;
+    font-size: 20px;
+    font-weight: 600;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    padding: 0;
+}
+.nav-btn:hover {
+    background: #2563EB;
+    transform: scale(1.05);
+}
+.nav-btn:active {
+    transform: scale(0.95);
+    background: #004494;
+}
+
+/* Modal window */
+.add-groups-form, .add-teachers-form {
+    font-family: "Sofia Sans", sans-serif;
+}
+.modal-window {
+    display: none;
+    box-sizing: border-box;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    border: 2px solid #dadada;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    min-width: 500px;
+    z-index: 100;
+    padding: 20px;
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.close-modal {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #ff4d4d;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 5px rgba(142, 14, 14, 0.5);
+    transition: background-color 0.3s ease;
+}
+
+.close-modal:hover {
+    transform: scale(1.1);
+    background: #cc0000;
+}
+
+.add-form {
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-align: center;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+label p {
+    margin-bottom: 5px;
+    font-size: 1em;
+    color: #555;
+}
+
+.input-add {
+    width: 90%;
+    margin-bottom: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 4px rgba(78, 80, 83, 0.3);
+    transition: border-color 0.3s ease;
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.input-add:focus {
+    border: 2px solid #3B82F6;
+    outline: none;
+}
+.input-add::placeholder {
+    font-style: italic;
+    color: #9CA3AF;
+}
+select {
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.submit-button {
+    margin-top: 5px;
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+    background-color: #3B82F6;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px; 
+    font-size: 1.2em;
+    font-family: "Sofia Sans", sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(59, 130, 246, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.submit-button:hover {
+    transform: translateX(-50%) scale(1.05);
+    background-color: #2563EB;
+    box-shadow: 0 6px 10px rgba(37, 99, 235, 0.5);
+}
+.submit-button:active {
+    transform: translateX(-50%) scale(0.95);
+    box-shadow: 0 3px 5px rgba(37, 99, 235, 0.4);
+}
+
+
+.name-of-table {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333;
+    margin-bottom: 5px;
+    text-align: center;
+}
+.teacher-schedule-table {
+    margin-bottom: 5px;
+    /* border-collapse: separate; */
+    box-sizing: border-box;
+    font-size: 1em;
+    table-layout: fixed;
+    width: 100%;
+    box-shadow: 0 0 8px rgba(78, 80, 83, 0.4);
+    user-select: none;
+}
+
+.teacher-schedule-table th,
+.teacher-schedule-table td {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    padding: 10px;
+    border: 1px solid #767676;
+    text-align: center;
+    vertical-align: middle;
+    height: 30px;
+}
+
+.teacher-schedule-table th, .teacher-schedule-table tr td:first-child { 
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.day-header, .pair-header, .time-cell {
+    cursor: pointer;
+}
+.day-header:hover, .pair-header:hover {
+    border: 1.5px solid #3B82F6;
+}
+.time-cell.selected {
+    background-color: rgba(74, 195, 76, 0.75);
+}
+.time-cell.not-free {
+    background-color: rgba(255, 115, 0, 0.75);
+    cursor: not-allowed;
+    font-size: 0.8em;
+    padding: 2px;
+}
+.time-cell.not-free b {
+    font-weight: 800;
+}
+
+button:disabled {
+    background-color: #ccc;
+    color: #666;
+    cursor: not-allowed;
+}
+
+/* Delete confirmation */
+.delete-confirmation {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+.delete-confirmation p {
+    padding-block: 20px;
+    width: 100%;
+    font-size: 1.2rem;
+    font-weight: 700;
+}
+.delete-button-submit {
+    background-color: #ff0000;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px; 
+    font-size: 1.2em;
+    font-family: "Sofia Sans", sans-serif;
+    font-weight: 500;
+    cursor: pointer;
+    box-shadow: 0 4px 6px rgba(255, 0, 0, 0.3);
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+}
+.delete-button-submit:hover {
+    transform: scale(1.05);
+    background-color: #d20000;
+    box-shadow: 0 6px 10px rgba(235, 37, 37, 0.5);
+}
+.delete-button-submit:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 5px rgba(235, 37, 37, 0.4);
+}
+
+/* Message window */
+.message-window {
+    display: none;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    box-sizing: border-box;
+    padding: 15px;
+    border-radius: 20px;
+    font-size: 18px;
+    font-family: "Sofia Sans", sans-serif;
+    color: black;
+    text-align: center;
+    min-width: 300px;
+    max-width: 600px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.5s ease-in-out, visibility 0.5s;
+    z-index: 10000;
+}
+.success {
+    background: rgb(208, 255, 208);
+    border: 3px solid rgba(0, 255, 0, 0.5);
+}
+.error {
+    background: rgb(250, 209, 207);
+    border: 3px solid rgba(255, 0, 0, 0.5);
+}
+.warning {
+    background: rgb(255, 255, 208);
+    border: 3px solid rgba(255, 255, 0, 0.5);
+}
+.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Group container style and Teacher container style*/
+.groups-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+}
+.teachers-container {
+    display: grid;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    padding: 5px 15px;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+}
+  
+.group-item, .teacher-item {
+    display: flex;
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    background-color: #fffae2;
+    border: 2px solid #6ea4fc;
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+    border-radius: 20px;
+    padding: 5px;
+    position: relative;
+}
+.group-item:hover, .teacher-item:hover {
+    transform: scale(1.05);
+}
+
+.group-item:hover .icon-button, .teacher-item:hover .icon-button {
+    visibility: visible;
+}
+.group-item:hover .group-name, .teacher-item:hover .teacher-name {
+    filter: blur(2px);
+}
+.group-name, .teacher-name {
+    font-family: "Sofia Sans", sans-serif;
+    font-size: 1rem;
+    font-weight: 700;
+    transition: filter 0.3s ease;
+}
+.icon-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+    visibility: hidden;
+}
+.icon-button svg {
+    width: 20px;
+    height: 20px;
+    fill: white;
+}
+.delete-button:hover svg {
+    fill: rgba(255, 0, 0, 0.8);
+}
+.edit-button:hover svg {
+    fill: rgb(0, 255, 0);
+}
+
+/* teacher card */
+#teacher-cards-container {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 5px;
+  }
+.teacher-card {
+    box-sizing: border-box;
+    display: block;
+    visibility: hidden;
+    width: 650px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+    font-family: "Sofia Sans", sans-serif;
+    opacity: 0;
+    transform: translateX(50px);
+    transition: opacity 1s ease, transform 1s ease;
+}
+.teacher-card.show {
+    visibility: visible;
+    opacity: 1;
+    transform: translateX(0);
+}
+i {
+    font-style: italic;
+}
+.teacher-card h2 {
+    font-size: 24px;
+    margin-bottom: 10px;
+}
+.teacher-card p {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.teacher-card p b, .teacher-card h2 b {
+    font-weight: 800;
+}
+  
+.teacher-card-schedule-table {
+    font-size: 1rem;
+    width: 100%;
+    height: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.teacher-card-schedule-table th, .teacher-card-schedule-table tr td:first-child { 
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+.teacher-card-schedule-table th,
+.teacher-card-schedule-table td {
+    box-sizing: border-box;
+    border: 1px solid #767676;
+    text-align: center;
+    vertical-align: middle;
+    padding: 10px;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    height: 45px;
+}
+.teacher-card-time-cell.selected {
+    background-color: rgba(74, 195, 76, 0.75);
+}
+.teacher-card-time-cell.highlight {
+    border: 3px solid gold;
+    animation: glow 1s infinite;
+}
+.teacher-card-time-cell.not-free {
+    background-color: rgba(255, 115, 0, 0.75);
+    cursor: not-allowed;
+    text-align: center;
+    padding: 2px;
+}
+.teacher-card-time-cell.not-free p {
+    font-size: 0.8rem;
+    margin: 0;
+}
+  
+@keyframes glow {
+    0% {
+      box-shadow: 0 0 10px gold;
+    }
+    50% {
+      box-shadow: 0 0 40px gold;
+    }
+    100% {
+      box-shadow: 0 0 10px gold;
+    }
+}
+/* add lesson */
+.add-lesson-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(5px);
+    display: none;
+    z-index: 1000;
+}
+.add-lesson-content {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    box-sizing: border-box;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 30vw;
+    min-width: 350px;
+    max-height: 100%;
+    background: white;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    font-family: "Sofia Sans", sans-serif;
+}
+
+.add-lesson-content-with-teacher {
+    position: relative;
+    top: 50%;
+    left: calc((100% - 660px) / 2);
+    transform: translate(-50%, -50%);
+    transition: top 1s ease, left 1s ease, transform 1s ease;
+}
+
+/* Стиль для кастомного чекбоксу */
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    padding-left: 35px;
+    margin-block: 5px 15px;
+}
+
+.checkbox-container input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.checkbox-container .checkmark {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 4px;
+    transition: all 0.3s;
+}
+
+.checkbox-container:hover .checkmark {
+    background-color: #f0f8ff;
+}
+
+.checkbox-container input:checked + .checkmark {
+    background-color: #007bff;
+    border-color: #0056b3;
+}
+
+.checkbox-container input:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 6px;
+    top: 2px;
+    width: 6px;
+    height: 12px;
+    border: solid #fff;
+    border-width: 0 2px 2px 0;
+    transform: rotate(45deg);
+}
+
+/* Стиль для кастомної радіокнопки */
+.radio-container-div {
+    display: flex;
+    flex-direction: row;
+    margin-block: 10px;
+    gap: 10px;
+}
+.radio-container-div label p {
+    text-align: center;
+    vertical-align: middle;
+    margin: 0;
+}
+.radio-container {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    cursor: pointer;
+    user-select: none;
+    position: relative;
+    padding-left: 25px;
+}
+
+.radio-container input {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.radio-container .checkmark {
+    box-sizing: border-box;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 20px;
+    height: 20px;
+    background-color: #fff;
+    border: 1px solid #007bff;
+    border-radius: 50%;
+    transition: all 0.3s;
+}
+
+.radio-container:hover .checkmark {
+    background-color: #f0f8ff;
+}
+
+.radio-container input:checked + .checkmark {
+    border-color: #0056b3;
+    background-color: #007bff;
+}
+
+.radio-container input:checked + .checkmark::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 8px;
+    height: 8px;
+    background-color: #fff;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.highlight {
+    border: 2px solid rgb(255, 136, 0);
+    box-shadow: 0 0 2px rgb(255, 136, 0);
+}
+
