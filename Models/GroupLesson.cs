@@ -8,7 +8,7 @@ namespace Schedule_for_Un.Models
     {
         public int GroupId { get; set; }
 
-        [JsonIgnore]
+        //змінено [JsonIgnore]
         public Group? Group { get; set; }
         public int LessonId { get; set; }
         

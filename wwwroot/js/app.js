@@ -918,23 +918,29 @@ function sortGroups(groups) {
   };
 
   return groups.sort((a, b) => {
-    if (a.specialty === b.specialty) {
-      const numA = a.name.match(/\d+/);
-      const numB = b.name.match(/\d+/);
+    // Порівнюємо за пріоритетом спеціальності
+    const specCompare = specialtyPriority[a.specialty] - specialtyPriority[b.specialty];
+    if (specCompare !== 0) return specCompare;
 
-      if (numA && numB) {
-        const numberA = parseInt(numA[0]);
-        const numberB = parseInt(numB[0]);
-        if (numberA !== numberB) {
-          return numberA - numberB;
-        }
-      }
-      // Якщо цифри однакові або їх немає, сортуємо за алфавітом
-      return a.name.localeCompare(b.name);
+    // Порівнюємо за префіксом до числа (наприклад, "ТК", "ТТП")
+    const prefixA = a.name.replace(/\d+.*/, '');
+    const prefixB = b.name.replace(/\d+.*/, '');
+    if (prefixA !== prefixB) {
+      return prefixA.localeCompare(prefixB);
     }
-    return specialtyPriority[a.specialty] - specialtyPriority[b.specialty];
+
+    // Порівнюємо за числом
+    const numA = a.name.match(/\d+/);
+    const numB = b.name.match(/\d+/);
+    if (numA && numB) {
+      return parseInt(numA[0]) - parseInt(numB[0]);
+    }
+
+    // Як запасний варіант — повна назва
+    return a.name.localeCompare(b.name);
   });
 }
+
 
 // ---------------------- ADD LESSON --------------------------------
 
